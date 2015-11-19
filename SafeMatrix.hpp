@@ -14,7 +14,6 @@ public:
 	void driver ( );
 	int length ( ) const;
 	SafeArray<T>& operator[](int index);
-	SafeMatrix& operator=(const SafeMatrix& rhs);
 	friend ostream& operator<<(ostream& output, const SafeMatrix& aSafeMatrix) {
 		for (int i = 0; i < aSafeMatrix.rowSize; ++i) {
 			output << aSafeMatrix.myRows[i] << "\n";

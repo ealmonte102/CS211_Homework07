@@ -68,9 +68,9 @@ int SafeArray<T>::length ( ) const {
 
 template <class T>
 SafeArray<T>::~SafeArray ( ) {
-	if (array != NULL) {
+	if (array != nullptr) {
 		delete[] array;
-		array = NULL;
+		array = nullptr;
 	}
 }
 
@@ -85,9 +85,9 @@ SafeArray<T>::SafeArray (const SafeArray<T>& other) : size (other.size) {
 template <class T>
 SafeArray<T>& SafeArray<T>::operator = (const SafeArray<T>& other) {
 	if (this != &other) {
-		if (array != NULL) {
+		if (array != nullptr) {
 			delete[] array;
-			array = NULL;
+			array = nullptr;
 		}
 		size = other.size;
 		array = new T[size];
@@ -97,9 +97,6 @@ SafeArray<T>& SafeArray<T>::operator = (const SafeArray<T>& other) {
 	}
 	return *this;
 }
-
-
-
-
 #endif //SAFE_ARRAY_HPP
+
 
