@@ -14,6 +14,7 @@ public:
 	SafeArray ( );
 	SafeArray (int s);
 	T& operator [] (int index);
+	const T& operator [] (int index) const;
 	int length ( ) const;
 	~SafeArray ( );
 	SafeArray (const SafeArray<T>& other);
@@ -41,6 +42,17 @@ SafeArray<T>::SafeArray (int s) : size (s) {
 
 template <class T>
 T& SafeArray<T>::operator [] (int index) {
+	if (index < 0 || index >= size) {
+		cout << "Array index: " << index << " is out of bounds."
+			<< endl;
+		exit (1);
+	}
+	return array[index];
+}
+
+template <class T>
+const T& SafeArray<T>::operator[](int index) const
+{
 	if (index < 0 || index >= size) {
 		cout << "Array index: " << index << " is out of bounds."
 			<< endl;

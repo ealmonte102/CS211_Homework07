@@ -11,8 +11,6 @@ template <class T>
 class SafeMatrix {
 public:
 	SafeMatrix (int rows, int cols);
-	SafeMatrix (const SafeMatrix& rhs);
-	~SafeMatrix ( );
 	void driver ( );
 	int length ( ) const;
 	SafeArray<T>& operator[](int index);
@@ -25,32 +23,15 @@ public:
 	}
 private:
 	int rowSize;
-	//UNsafe array of SafeArrays.
-	SafeArray<T>* myRows;
+	//SafeArray of SafeArrays.
+	SafeArray<SafeArray<T>> myRows;
 };
 
 template <class T>
-SafeMatrix<T>::SafeMatrix(int rows, int cols) : rowSize(rows), myRows(nullptr) {
-	if(rows <= 0) {
-		cout << "Invalid number of rows entered. The program will terminate.\n";
-		exit (1);
-	}
-	myRows = new SafeArray<T>[rowSize];
+SafeMatrix<T>::SafeMatrix(int rows, int cols) : rowSize(rows), myRows(SafeArray<SafeArray<T>>(rowSize)) {
 	for (int i = 0; i < rowSize; ++i) {
 		myRows[i] = SafeArray<T>(cols);
 	}
-}
-
-template <class T>
-SafeMatrix<T>::SafeMatrix(const SafeMatrix& rhs) : rowSize(rhs.rowSize), myRows(new SafeArray<T>[rhs.rowSize]) {
-	for (int i = 0; i < rowSize; ++i) {
-		myRows[i] = rhs.myRows[i];
-	}
-}
-
-template <class T>
-SafeMatrix<T>::~SafeMatrix( ) {
-	delete[] myRows;
 }
 
 template <class T>
@@ -78,17 +59,5 @@ SafeArray<T>& SafeMatrix<T>::operator[](int index)
 	return myRows[index];
 }
 
-template <class T>
-SafeMatrix<T>& SafeMatrix<T>::operator=(const SafeMatrix& rhs) {
-	if (this != &rhs) {
-		delete[] myRows;
-		myRows = new SafeArray<T>[rhs.rowSize];
-		rowSize = rhs.rowSize;
-		for (int i = 0; i < rowSize; ++i) {
-			myRows[i] = rhs.myRows[i];
-		}
-	}
-	return *this;
-}
 #endif //SAFE_MATRIX_HPP
 
