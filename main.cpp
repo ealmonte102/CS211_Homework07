@@ -8,12 +8,7 @@ void getRowAndColSize (int& rowSize, int& colSize);
 int main() {
 	int rowSize, colSize;
 	
-
-	SafeMatrix<int> im (1, 2);
-	im[0][0] = 2;
-	im[0][1] = 5;
-	cout << im;
-	/*cout << "Test 1 using <int>:\n";
+	cout << "Test 1 using <int>:\n";
 	getRowAndColSize (rowSize, colSize);
 	SafeMatrix<int> mySafeMatrix (rowSize, colSize);
 	mySafeMatrix.driver ( );
@@ -22,7 +17,7 @@ int main() {
 	getRowAndColSize (rowSize, colSize);
 	SafeMatrix<string> mySafeMatrix2 (rowSize, colSize);
 	mySafeMatrix2.driver ( );
-*/
+
 
 	return 0;
 }

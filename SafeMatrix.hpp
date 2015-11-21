@@ -22,9 +22,8 @@ public:
 	}
 private:
 	int rowSize;
-	SafeArray<SafeArray<T>> myRows;
 	//SafeArray of SafeArrays.
-
+	SafeArray<SafeArray<T>> myRows;
 };
 
 template <class T>
