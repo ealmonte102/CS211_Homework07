@@ -9,16 +9,15 @@ void getRowAndColSize (int& rowSize, int& colSize);
 int main() {
 	int rowSize, colSize;
 	
-	cout << "Test 1 using <int>:\n";
+	cout << "Test #1 using <int>:\n";
 	getRowAndColSize (rowSize, colSize);
 	SafeMatrix<int> mySafeMatrix (rowSize, colSize);
 	mySafeMatrix.driver ( );
 	
-	cout << "Test 2 using <string>:\n";
+	cout << "Test #2 using <string>:\n";
 	getRowAndColSize (rowSize, colSize);
 	SafeMatrix<string> mySafeMatrix2 (rowSize, colSize);
 	mySafeMatrix2.driver ( );
-
 
 	return 0;
 }
