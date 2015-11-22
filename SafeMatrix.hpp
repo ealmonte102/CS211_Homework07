@@ -2,7 +2,7 @@
 #define SAFE_MATRIX_HPP
 
 #include "SafeArray.hpp"
-#include <iostream>
+#include <iosfwd>
 
 using std::ostream;
 
@@ -11,9 +11,16 @@ template <class T>
 class SafeMatrix {
 public:
 	SafeMatrix (int rows, int cols);
+	
+	//Used to test various components in the SafeMatrix class.
 	void driver ( );
+	
+	//Returns the number of rows in the matrix.
 	int length ( ) const;
+	
+	//Returns a SafeArray located at the index specified. Boundaries are checked.
 	SafeArray<T>& operator[](int index);
+	
 	friend ostream& operator<<(ostream& output, const SafeMatrix& aSafeMatrix) {
 		for (int i = 0; i < aSafeMatrix.rowSize; ++i) {
 			output << aSafeMatrix.myRows[i] << "\n";
@@ -22,6 +29,7 @@ public:
 	}
 private:
 	int rowSize;
+	
 	//SafeArray of SafeArrays.
 	SafeArray<SafeArray<T>> myRows;
 };
@@ -33,14 +41,21 @@ SafeMatrix<T>::SafeMatrix(int rows, int cols) : rowSize(rows), myRows(SafeArray<
 	}
 }
 
+//Used to test various components.(operator>>, operator<<, operator[]).
 template <class T>
-void SafeMatrix<T>::driver( ) {
+void SafeMatrix<T>::driver ( ) {
+	cout << "=====Testing the >> operator=====\n";
 	for (int i = 0; i < rowSize; ++i) {
-		for (int j = 0; j < myRows[0].length(); ++j) {
+		for (int j = 0; j < myRows[0].length ( ); ++j) {
 			cin >> (*this)[i][j];
 		}
 	}
-	cout << *this;
+
+	cout << "=====Testing the << operator=====\n";
+		cout << *this;
+
+	cout << "=====Testing the [] operator=====\n";
+	cout << "SafeMatrix[0]: " << (*this)[0] << "\n";
 }
 
 template <class T>

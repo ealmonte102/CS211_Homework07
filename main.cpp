@@ -3,6 +3,7 @@
 //  
 #include "SafeMatrix.hpp"
 #include <string>
+
 void getRowAndColSize (int& rowSize, int& colSize);
 
 int main() {
