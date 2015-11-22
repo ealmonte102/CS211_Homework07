@@ -51,10 +51,6 @@ int SafeMatrix<T>::length( ) const {
 template <class T>
 SafeArray<T>& SafeMatrix<T>::operator[](int index)
 {
-	if(index < 0 || index >= rowSize) {
-		cout << "Array index out of bounds: " << index << "\n";
-		exit (1);
-	}
 	return myRows[index];
 }
 
